@@ -1,0 +1,33 @@
+--- ./src/wrapper/flopoco/flopoco_wrapper.cpp.old	2026-02-17 21:58:34.765300260 +1300
++++ ./src/wrapper/flopoco/flopoco_wrapper.cpp	2026-02-17 21:57:57.021317415 +1300
+@@ -198,6 +198,10 @@
+    { /// does not exist so we use Virtex 6 target
+       target = new flopoco::Virtex6();
+    }
++   else if(FU_target.find("Kintex-7") != std::string::npos)
++   { /// does not exist so we use Virtex 6 target
++      target = new flopoco::Virtex6();
++   }
+    else if(FU_target.find("CycloneII") != std::string::npos)
+    {
+       target = new flopoco::CycloneII();
+--- ./src/wrapper/synthesis/xilinx/XilinxBackendFlow.cpp.old	2026-02-17 21:54:56.781359852 +1300
++++ ./src/wrapper/synthesis/xilinx/XilinxBackendFlow.cpp	2026-02-17 21:55:34.105354230 +1300
+@@ -101,6 +101,7 @@
+    default_data["Zynq"] = "Zynq.data";
+    default_data["Kintex-Ultrascale-VVD"] = "Kintex-Ultrascale-VVD.data";
+    default_data["Alveo-Ultrascale-VVD"] = "Alveo-Ultrascale-VVD.data";
++   default_data["Kintex-7-VVD"] = "Kintex-7-VVD.data";
+ 
+    XMLDomParserRef parser;
+    if(Param->isOption(OPT_target_device_script))
+--- ./src/technology/generic_device.cpp.old     2026-03-06 16:31:40.956698824 +1300
++++ ./src/technology/generic_device.cpp 2026-03-06 16:32:19.910584234 +1300
+@@ -150,6 +150,7 @@
+    default_device_data["xcku060-3ffva1156-VVD"] = "xcku060-3ffva1156-VVD.data";
+    default_device_data["xcu280-2Lfsvh2892-VVD"] = "xcu280-2Lfsvh2892-VVD.data";
+    default_device_data["xcu55c-2Lfsvh2892-VVD"] = "xcu55c-2Lfsvh2892-VVD.data";
++   default_device_data["xc7k325t-1ffg676-VVD"] = "xc7k325t-1ffg676-VVD.data";
+
+    default_device_data["EP2C70F896C6"] = "EP2C70F896C6.data";
+    default_device_data["EP2C70F896C6-R"] = "EP2C70F896C6-R.data";

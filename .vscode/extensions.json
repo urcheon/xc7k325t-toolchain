@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "hnw.vscode-auto-open-markdown-preview",  // Auto open markdown
+    "ms-python.python",                       // Python support (includes Pylance and debugpy)
+    "ms-vscode-remote.remote-wsl",            // Remote WSL support
+    "ms-vscode.cmake-tools",                  // CMake tools support
+  ]
+}
