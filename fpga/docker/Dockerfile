@@ -309,6 +309,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libtbb12 \
     libusb-1.0-0 \
     libudev1 \
+    libftdi1-2 \
+    libhidapi-libusb0 \
     libhidapi-hidraw0 \
     libgpiod2 \
     graphviz \

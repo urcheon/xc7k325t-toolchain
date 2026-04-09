@@ -15,17 +15,27 @@ if(UNIX AND NOT APPLE)
         execute_process(COMMAND id -u OUTPUT_VARIABLE HOST_UID OUTPUT_STRIP_TRAILING_WHITESPACE)
         execute_process(COMMAND id -g OUTPUT_VARIABLE HOST_GID OUTPUT_STRIP_TRAILING_WHITESPACE)
 
-        set(DOCKER_BASE
+        set(DOCKER_RUN
             ${DOCKER_EXECUTABLE} run
             --user "${HOST_UID}:${HOST_GID}"
             --rm
+            -w /work/fpga
             -v ${CMAKE_SOURCE_DIR}:/work
             -v ${CMAKE_SOURCE_DIR}/build:/work/fpga/build
             -v ${CMAKE_SOURCE_DIR}/bin:/work/fpga/bin
+            ${DOCKER_IMAGE}
         )
 
-        set(DOCKER_RUN     ${DOCKER_BASE} -w /work/fpga ${DOCKER_IMAGE})
-        set(DOCKER_RUN_USB ${DOCKER_BASE} -w /work --privileged -v /dev/bus/usb:/dev/bus/usb ${DOCKER_IMAGE})
+        set(DOCKER_RUN_USB 
+            ${DOCKER_EXECUTABLE} run
+            --rm
+            -it
+            -w /work
+            --privileged
+            -v /dev/bus/usb:/dev/bus/usb
+            -v ${CMAKE_SOURCE_DIR}:/work
+            ${DOCKER_IMAGE}
+        )
 
         add_custom_target(bitstream_loopback_v COMMAND ${DOCKER_RUN} make loopback_v)
         add_custom_target(bitstream_loopback_hls COMMAND ${DOCKER_RUN} make loopback_hls)
@@ -37,8 +47,8 @@ if(UNIX AND NOT APPLE)
 
         # Target to flash the FPGA. Uses Make variable LOADER_ARGS to pass the file and flags.
         add_custom_target(flash_fpga
-            COMMAND ${DOCKER_RUN_USB} openFPGALoader $(LOADER_ARGS)
-            USES_TERMINAL
+            COMMAND ${DOCKER_RUN_USB} sh -c "openFPGALoader $(LOADER_ARGS)"
+            USES_TERMINAL VERBATIM
         )
 
         list(APPEND ALL_DEPS fpga_bins)

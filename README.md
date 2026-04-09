@@ -53,7 +53,7 @@ make flash_fpga LOADER_ARGS="-c ft232 bin/loopback_v.bit"
 make flash_fpga LOADER_ARGS="-c ft232 -f bin/loopback_v.bin"
 ```
 
-*(Note: Depending on your specific JTAG hardware, you may need to change -c ft232 to -c digilent, -c ch347, or another supported cable type.)*
+*(Note: Depending on your specific JTAG hardware, you may need to change -c ft232 to -c digilent, -c ch347_jtag, or another supported cable type.)*
 
 ## 4. Hardware Setup & Testing
 
