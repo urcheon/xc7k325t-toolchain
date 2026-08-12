@@ -1,0 +1,9 @@
+# Force XDC constraints files to be counted as Verilog
+*.xdc linguist-language=Verilog
+
+# Exclude FPGA build tooling, XML data, and Docker configurations
+fpga/docker/* linguist-vendored
+
+# Exclude test and utility automation scripts
+scripts/* linguist-vendored
+
