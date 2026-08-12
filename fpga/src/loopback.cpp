@@ -8,20 +8,24 @@
 #define CLK_FREQ 50000000
 #define DEBOUNCE_TIME_MS 10
 
+// VERY Brittle
+#define CYCLES_PER_INVOCATION 7
+#define ACTUAL_TICK_RATE (CLK_FREQ / CYCLES_PER_INVOCATION)
+
 // Calculate counter limits based on the system constants.
-#define BLINK_COUNTER_MAX (CLK_FREQ / 2)
+#define BLINK_COUNTER_MAX (ACTUAL_TICK_RATE / 2)
 #define DEBOUNCE_COUNTER_MAX ((CLK_FREQ / 1000) * DEBOUNCE_TIME_MS)
 
 // The main function to be synthesized.
 // Inputs are passed by value.
-// Outputs are passed by pointer, which HLS tools typically interpret as output ports.
+// Outputs are passed by reference to infer scalar output ports instead of memory interfaces.
 extern "C" void loopback(
     bool switch_in,
     bool gpio_loop_in,
-    bool* led_blink,
-    bool* led_gpio,
-    bool* gpio_from_switch,
-    bool* gpio_loop_out)
+    bool& led_blink,
+    bool& led_gpio,
+    bool& gpio_from_switch,
+    bool& gpio_loop_out)
 {
     // 1Hz Blinking LED Logic
     // Static variables to maintain state across clock cycles (function calls).
@@ -34,7 +38,7 @@ extern "C" void loopback(
     } else {
         blink_counter++;
     }
-    *led_blink = led_blink_reg;
+    led_blink = led_blink_reg;
 
 
     // Switch Debouncer Logic
@@ -68,11 +72,11 @@ extern "C" void loopback(
     // Switch to GPIO Logic
     // Drive a GPIO high when the switch is pressed.
     // Assumes an active-low switch (value is false when pressed).
-    *gpio_from_switch = (debounced_switch_out == false);
+    gpio_from_switch = (debounced_switch_out == false);
 
 
     // GPIO Loopback Logic (Combinational)
     // The output GPIO and a second LED directly mirror the state of the input GPIO.
-    *gpio_loop_out = gpio_loop_in;
-    *led_gpio = gpio_loop_in;
+    gpio_loop_out = gpio_loop_in;
+    led_gpio = gpio_loop_in;
 }

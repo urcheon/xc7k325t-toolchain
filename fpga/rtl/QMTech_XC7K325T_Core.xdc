@@ -1,3 +1,5 @@
+# https://github.com/ChinaQMTECH/QMTECH_XC7K325T_CORE_BOARD
+
 # Bank 34        1.5v
 # Bank 32 - 33   1.8v
 # Bank 12 - 16   3.3v
@@ -508,3 +510,289 @@ set_property PACKAGE_PIN C26 [get_ports {GPIO_U5[59]}]
 # U5 Pin 60: Bank 14 - IO_L5P_T0_D06 (D26)
 set_property IOSTANDARD LVCMOS33 [get_ports {GPIO_U5[60]}]
 set_property PACKAGE_PIN D26 [get_ports {GPIO_U5[60]}]
+
+
+##### DDR3
+
+# DDR3_DQ[0]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQ[0]}]
+set_property SLEW FAST [get_ports {DDR3_DQ[0]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_DQ[0]}]
+set_property PACKAGE_PIN W1 [get_ports {DDR3_DQ[0]}]
+
+# DDR3_DQ[1]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQ[1]}]
+set_property SLEW FAST [get_ports {DDR3_DQ[1]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_DQ[1]}]
+set_property PACKAGE_PIN V2 [get_ports {DDR3_DQ[1]}]
+
+# DDR3_DQ[2]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQ[2]}]
+set_property SLEW FAST [get_ports {DDR3_DQ[2]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_DQ[2]}]
+set_property PACKAGE_PIN Y1 [get_ports {DDR3_DQ[2]}]
+
+# DDR3_DQ[3]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQ[3]}]
+set_property SLEW FAST [get_ports {DDR3_DQ[3]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_DQ[3]}]
+set_property PACKAGE_PIN Y3 [get_ports {DDR3_DQ[3]}]
+
+# DDR3_DQ[4]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQ[4]}]
+set_property SLEW FAST [get_ports {DDR3_DQ[4]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_DQ[4]}]
+set_property PACKAGE_PIN AC2 [get_ports {DDR3_DQ[4]}]
+
+# DDR3_DQ[5]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQ[5]}]
+set_property SLEW FAST [get_ports {DDR3_DQ[5]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_DQ[5]}]
+set_property PACKAGE_PIN Y2 [get_ports {DDR3_DQ[5]}]
+
+# DDR3_DQ[6]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQ[6]}]
+set_property SLEW FAST [get_ports {DDR3_DQ[6]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_DQ[6]}]
+set_property PACKAGE_PIN AB2 [get_ports {DDR3_DQ[6]}]
+
+# DDR3_DQ[7]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQ[7]}]
+set_property SLEW FAST [get_ports {DDR3_DQ[7]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_DQ[7]}]
+set_property PACKAGE_PIN AA3 [get_ports {DDR3_DQ[7]}]
+
+# DDR3_DQ[8]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQ[8]}]
+set_property SLEW FAST [get_ports {DDR3_DQ[8]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_DQ[8]}]
+set_property PACKAGE_PIN U1 [get_ports {DDR3_DQ[8]}]
+
+# DDR3_DQ[9]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQ[9]}]
+set_property SLEW FAST [get_ports {DDR3_DQ[9]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_DQ[9]}]
+set_property PACKAGE_PIN V4 [get_ports {DDR3_DQ[9]}]
+
+# DDR3_DQ[10]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQ[10]}]
+set_property SLEW FAST [get_ports {DDR3_DQ[10]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_DQ[10]}]
+set_property PACKAGE_PIN U6 [get_ports {DDR3_DQ[10]}]
+
+# DDR3_DQ[11]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQ[11]}]
+set_property SLEW FAST [get_ports {DDR3_DQ[11]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_DQ[11]}]
+set_property PACKAGE_PIN W3 [get_ports {DDR3_DQ[11]}]
+
+# DDR3_DQ[12]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQ[12]}]
+set_property SLEW FAST [get_ports {DDR3_DQ[12]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_DQ[12]}]
+set_property PACKAGE_PIN V6 [get_ports {DDR3_DQ[12]}]
+
+# DDR3_DQ[13]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQ[13]}]
+set_property SLEW FAST [get_ports {DDR3_DQ[13]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_DQ[13]}]
+set_property PACKAGE_PIN U2 [get_ports {DDR3_DQ[13]}]
+
+# DDR3_DQ[14]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQ[14]}]
+set_property SLEW FAST [get_ports {DDR3_DQ[14]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_DQ[14]}]
+set_property PACKAGE_PIN U7 [get_ports {DDR3_DQ[14]}]
+
+# DDR3_DQ[15]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQ[15]}]
+set_property SLEW FAST [get_ports {DDR3_DQ[15]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_DQ[15]}]
+set_property PACKAGE_PIN U5 [get_ports {DDR3_DQ[15]}]
+
+# DDR3_ADDR[0]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_ADDR[0]}]
+set_property SLEW FAST [get_ports {DDR3_ADDR[0]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_ADDR[0]}]
+set_property PACKAGE_PIN AF5 [get_ports {DDR3_ADDR[0]}]
+
+# DDR3_ADDR[1]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_ADDR[1]}]
+set_property SLEW FAST [get_ports {DDR3_ADDR[1]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_ADDR[1]}]
+set_property PACKAGE_PIN AF2 [get_ports {DDR3_ADDR[1]}]
+
+# DDR3_ADDR[2]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_ADDR[2]}]
+set_property SLEW FAST [get_ports {DDR3_ADDR[2]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_ADDR[2]}]
+set_property PACKAGE_PIN AD6 [get_ports {DDR3_ADDR[2]}]
+
+# DDR3_ADDR[3]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_ADDR[3]}]
+set_property SLEW FAST [get_ports {DDR3_ADDR[3]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_ADDR[3]}]
+set_property PACKAGE_PIN AC6 [get_ports {DDR3_ADDR[3]}]
+
+# DDR3_ADDR[4]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_ADDR[4]}]
+set_property SLEW FAST [get_ports {DDR3_ADDR[4]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_ADDR[4]}]
+set_property PACKAGE_PIN AD4 [get_ports {DDR3_ADDR[4]}]
+
+# DDR3_ADDR[5]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_ADDR[5]}]
+set_property SLEW FAST [get_ports {DDR3_ADDR[5]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_ADDR[5]}]
+set_property PACKAGE_PIN AB6 [get_ports {DDR3_ADDR[5]}]
+
+# DDR3_ADDR[6]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_ADDR[6]}]
+set_property SLEW FAST [get_ports {DDR3_ADDR[6]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_ADDR[6]}]
+set_property PACKAGE_PIN AE2 [get_ports {DDR3_ADDR[6]}]
+
+# DDR3_ADDR[7]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_ADDR[7]}]
+set_property SLEW FAST [get_ports {DDR3_ADDR[7]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_ADDR[7]}]
+set_property PACKAGE_PIN Y5 [get_ports {DDR3_ADDR[7]}]
+
+# DDR3_ADDR[8]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_ADDR[8]}]
+set_property SLEW FAST [get_ports {DDR3_ADDR[8]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_ADDR[8]}]
+set_property PACKAGE_PIN AA4 [get_ports {DDR3_ADDR[8]}]
+
+# DDR3_ADDR[9]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_ADDR[9]}]
+set_property SLEW FAST [get_ports {DDR3_ADDR[9]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_ADDR[9]}]
+set_property PACKAGE_PIN AE6 [get_ports {DDR3_ADDR[9]}]
+
+# DDR3_ADDR[10]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_ADDR[10]}]
+set_property SLEW FAST [get_ports {DDR3_ADDR[10]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_ADDR[10]}]
+set_property PACKAGE_PIN AE3 [get_ports {DDR3_ADDR[10]}]
+
+# DDR3_ADDR[11]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_ADDR[11]}]
+set_property SLEW FAST [get_ports {DDR3_ADDR[11]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_ADDR[11]}]
+set_property PACKAGE_PIN AD5 [get_ports {DDR3_ADDR[11]}]
+
+# DDR3_ADDR[12]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_ADDR[12]}]
+set_property SLEW FAST [get_ports {DDR3_ADDR[12]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_ADDR[12]}]
+set_property PACKAGE_PIN AB4 [get_ports {DDR3_ADDR[12]}]
+
+# DDR3_ADDR[13]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_ADDR[13]}]
+set_property SLEW FAST [get_ports {DDR3_ADDR[13]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_ADDR[13]}]
+set_property PACKAGE_PIN Y6 [get_ports {DDR3_ADDR[13]}]
+
+# DDR3_BA[0]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_BA[0]}]
+set_property SLEW FAST [get_ports {DDR3_BA[0]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_BA[0]}]
+set_property PACKAGE_PIN AD3 [get_ports {DDR3_BA[0]}]
+
+# DDR3_BA[1]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_BA[1]}]
+set_property SLEW FAST [get_ports {DDR3_BA[1]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_BA[1]}]
+set_property PACKAGE_PIN AE1 [get_ports {DDR3_BA[1]}]
+
+# DDR3_BA[2]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_BA[2]}]
+set_property SLEW FAST [get_ports {DDR3_BA[2]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_BA[2]}]
+set_property PACKAGE_PIN AE5 [get_ports {DDR3_BA[2]}]
+
+# DDR3_RAS_N
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_RAS_N}]
+set_property SLEW FAST [get_ports {DDR3_RAS_N}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_RAS_N}]
+set_property PACKAGE_PIN AC3 [get_ports {DDR3_RAS_N}]
+
+# DDR3_CAS_N
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_CAS_N}]
+set_property SLEW FAST [get_ports {DDR3_CAS_N}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_CAS_N}]
+set_property PACKAGE_PIN AC4 [get_ports {DDR3_CAS_N}]
+
+# DDR3_WE_N
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_WE_N}]
+set_property SLEW FAST [get_ports {DDR3_WE_N}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_WE_N}]
+set_property PACKAGE_PIN AF4 [get_ports {DDR3_WE_N}]
+
+# DDR3_RESET_N
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_RESET_N}]
+set_property SLEW FAST [get_ports {DDR3_RESET_N}]
+set_property IOSTANDARD LVCMOS15 [get_ports {DDR3_RESET_N}]
+set_property PACKAGE_PIN W4 [get_ports {DDR3_RESET_N}]
+
+# DDR3_CKE
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_CKE}]
+set_property SLEW FAST [get_ports {DDR3_CKE}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_CKE}]
+set_property PACKAGE_PIN AD1 [get_ports {DDR3_CKE}]
+
+# DDR3_ODT
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_ODT}]
+set_property SLEW FAST [get_ports {DDR3_ODT}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_ODT}]
+set_property PACKAGE_PIN AF3 [get_ports {DDR3_ODT}]
+
+# DDR3_DQM[0]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQM[0]}]
+set_property SLEW FAST [get_ports {DDR3_DQM[0]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_DQM[0]}]
+set_property PACKAGE_PIN V1 [get_ports {DDR3_DQM[0]}]
+
+# DDR3_DQM[1]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQM[1]}]
+set_property SLEW FAST [get_ports {DDR3_DQM[1]}]
+set_property IOSTANDARD SSTL15 [get_ports {DDR3_DQM[1]}]
+set_property PACKAGE_PIN V3 [get_ports {DDR3_DQM[1]}]
+
+# DDR3_DQS_P[0]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQS_P[0]}]
+set_property SLEW FAST [get_ports {DDR3_DQS_P[0]}]
+set_property IOSTANDARD DIFF_SSTL15 [get_ports {DDR3_DQS_P[0]}]
+set_property PACKAGE_PIN AB1 [get_ports {DDR3_DQS_P[0]}]
+
+# DDR3_DQS_N[0]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQS_N[0]}]
+set_property SLEW FAST [get_ports {DDR3_DQS_N[0]}]
+set_property IOSTANDARD DIFF_SSTL15 [get_ports {DDR3_DQS_N[0]}]
+set_property PACKAGE_PIN AC1 [get_ports {DDR3_DQS_N[0]}]
+
+# DDR3_DQS_P[1]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQS_P[1]}]
+set_property SLEW FAST [get_ports {DDR3_DQS_P[1]}]
+set_property IOSTANDARD DIFF_SSTL15 [get_ports {DDR3_DQS_P[1]}]
+set_property PACKAGE_PIN W6 [get_ports {DDR3_DQS_P[1]}]
+
+# DDR3_DQS_N[1]
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_DQS_N[1]}]
+set_property SLEW FAST [get_ports {DDR3_DQS_N[1]}]
+set_property IOSTANDARD DIFF_SSTL15 [get_ports {DDR3_DQS_N[1]}]
+set_property PACKAGE_PIN W5 [get_ports {DDR3_DQS_N[1]}]
+
+# DDR3_CLK_P
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_CLK_P}]
+set_property SLEW FAST [get_ports {DDR3_CLK_P}]
+set_property IOSTANDARD DIFF_SSTL15 [get_ports {DDR3_CLK_P}]
+set_property PACKAGE_PIN AA5 [get_ports {DDR3_CLK_P}]
+
+# DDR3_CLK_N
+set_property VCCAUX_IO NORMAL [get_ports {DDR3_CLK_N}]
+set_property SLEW FAST [get_ports {DDR3_CLK_N}]
+set_property IOSTANDARD DIFF_SSTL15 [get_ports {DDR3_CLK_N}]
+set_property PACKAGE_PIN AB5 [get_ports {DDR3_CLK_N}]
+

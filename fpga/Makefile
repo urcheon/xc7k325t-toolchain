@@ -10,7 +10,6 @@ PART        := $(DEVICE)-1
 DEVICE_NAME := xc7k325t,-1,ffg676,VVD
 CLK_FREQ    := 50
 CLK_PERIOD  := 20
-XDC         := $(RTL_DIR)/QMTech_XC7K325T_Core.xdc
 DBROOT      := /usr/local/share/nextpnr/external/prjxray-db/kintex7
 CHIPDB      := $(DBROOT)/$(DEVICE).bin
 
@@ -21,7 +20,6 @@ NEXTPNR     := nextpnr-xilinx
 FASM2FRAMES := fasm2frames
 FRAMES2BIT  := xc7frames2bit
 
-FPGA_TOP     := $(RTL_DIR)/fpga_top.v
 DEBOUNCER    := $(RTL_DIR)/debouncer.v
 
 # Sub-make parameters
@@ -40,25 +38,61 @@ HLS_SRCS_REL    := $(addprefix ../$(SRC_DIR)/, $(HLS_SRCS))
 SYNTH_DEPS      := $(V_SRCS) $(SV_SRCS)
 YOSYS_READ_CMDS := $(foreach v,$(V_SRCS),read_verilog $(VLOG_MACROS) $(v);) $(foreach sv,$(SV_SRCS),read_verilog $(VLOG_MACROS) -sv $(sv);)
 
-.PHONY: all clean loopback_v loopback_hls bitstream
+.PHONY: all clean core_loopback dev_loopback bitstream
 
-all: loopback_v loopback_hls
+all: core_loopback dev_loopback
+
+core_loopback: core_loopback_hls core_loopback_v
+
+dev_loopback: dev_loopback_hls dev_loopback_v
 
 $(BUILD) $(BIN):
 	mkdir -p $@
 
-loopback_hls:
+# Board-specific top/xdc file locations
+CORE_TOP := $(RTL_DIR)/QMTech_XC7K325T_Core_loopback_top.v
+CORE_XDC := $(RTL_DIR)/QMTech_XC7K325T_Core.xdc
+
+DEV_TOP  := $(RTL_DIR)/QMTech_Kintex7_Dev_loopback_top.v
+DEV_XDC  := $(RTL_DIR)/QMTech_Kintex7_Dev.xdc
+
+# Target-specific variable assignments
+core_loopback_hls core_loopback_v: FPGA_TOP := $(CORE_TOP)
+core_loopback_hls core_loopback_v: FPGA_XDC := $(CORE_XDC)
+
+dev_loopback_hls dev_loopback_v: FPGA_TOP := $(DEV_TOP)
+dev_loopback_hls dev_loopback_v: FPGA_XDC := $(DEV_XDC)
+
+core_loopback_hls:
 	$(MAKE) bitstream \
-		BIT_NAME=loopback_hls \
+		BIT_NAME=core_loopback_hls \
 		HLS_SRCS="loopback.cpp" \
 		HLS_TOP=loopback \
+		XDC="$(FPGA_XDC)" \
 		V_SRCS="$(FPGA_TOP)" \
-		SV_SRCS="$(BUILD)/loopback_hls.sv" \
+		SV_SRCS="$(BUILD)/core_loopback_hls.sv" \
 		VLOG_MACROS="-DHLS_BUILD"
 
-loopback_v:
+core_loopback_v:
 	$(MAKE) bitstream \
-		BIT_NAME=loopback_v \
+		BIT_NAME=core_loopback_v \
+		XDC="$(FPGA_XDC)" \
+		V_SRCS="$(FPGA_TOP) $(DEBOUNCER) $(RTL_DIR)/loopback.v"
+
+dev_loopback_hls:
+	$(MAKE) bitstream \
+		BIT_NAME=dev_loopback_hls \
+		HLS_SRCS="loopback.cpp" \
+		HLS_TOP=loopback \
+		XDC="$(FPGA_XDC)" \
+		V_SRCS="$(FPGA_TOP)" \
+		SV_SRCS="$(BUILD)/dev_loopback_hls.sv" \
+		VLOG_MACROS="-DHLS_BUILD"
+
+dev_loopback_v:
+	$(MAKE) bitstream \
+		BIT_NAME=dev_loopback_v \
+		XDC="$(FPGA_XDC)" \
 		V_SRCS="$(FPGA_TOP) $(DEBOUNCER) $(RTL_DIR)/loopback.v"
 
 bitstream: $(BIN)/$(BIT_NAME).bit
@@ -66,7 +100,9 @@ bitstream: $(BIN)/$(BIT_NAME).bit
 # Bambu executes from the build directory to contain intermediate generated files
 $(BUILD)/$(BIT_NAME).sv: $(HLS_DEPS) | $(BUILD)
 	cd $(BUILD) && \
-	$(BAMBU) -v 4 --top-fname=$(HLS_TOP) --clock-period=$(CLK_PERIOD) --writer=V --device-name=$(DEVICE_NAME) --no-clean $(HLS_SRCS_REL) && \
+	$(BAMBU) -v 4 --top-fname=$(HLS_TOP) --clock-period=$(CLK_PERIOD) \
+		--writer=V --device-name=$(DEVICE_NAME) --generate-interface=INFER \
+		--no-clean $(HLS_SRCS_REL) && \
 	mv $(HLS_TOP).v $(BIT_NAME).sv && \
 	touch array.mem array_a.mem array_b.mem
 

@@ -37,12 +37,14 @@ if(UNIX AND NOT APPLE)
             ${DOCKER_IMAGE}
         )
 
-        add_custom_target(bitstream_loopback_v COMMAND ${DOCKER_RUN} make loopback_v)
-        add_custom_target(bitstream_loopback_hls COMMAND ${DOCKER_RUN} make loopback_hls)
+        add_custom_target(bitstream_core_loopback_v COMMAND ${DOCKER_RUN} make core_loopback_v)
+        add_custom_target(bitstream_core_loopback_hls COMMAND ${DOCKER_RUN} make core_loopback_hls)
+        add_custom_target(bitstream_dev_loopback_v COMMAND ${DOCKER_RUN} make dev_loopback_v)
+        add_custom_target(bitstream_dev_loopback_hls COMMAND ${DOCKER_RUN} make dev_loopback_hls)
 
         add_custom_target(fpga_bins
             COMMAND ${DOCKER_RUN} sh -c "python3 scripts/bit_to_bin.py bin/*.bit"
-            DEPENDS bitstream_loopback_v bitstream_loopback_hls
+            DEPENDS bitstream_core_loopback_v bitstream_core_loopback_hls bitstream_dev_loopback_v bitstream_dev_loopback_hls
         )
 
         # Target to flash the FPGA. Uses Make variable LOADER_ARGS to pass the file and flags.

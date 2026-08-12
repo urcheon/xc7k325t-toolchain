@@ -44,16 +44,16 @@ From the `build` directory:
 **Write to SRAM (Volatile - using .bit):**
 
 ```bash
-make flash_fpga LOADER_ARGS="-c ft232 bin/loopback_v.bit"
+make flash_fpga LOADER_ARGS="-c ch347_jtag bin/dev_loopback_v.bit"
 ```
 
 **Write to Flash (Non-Volatile - using .bin):**
 
 ```bash
-make flash_fpga LOADER_ARGS="-c ft232 -f bin/loopback_v.bin"
+make flash_fpga LOADER_ARGS="-c ch347_jtag -f bin/dev_loopback_v.bin"
 ```
 
-*(Note: Depending on your specific JTAG hardware, you may need to change -c ft232 to -c digilent, -c ch347_jtag, or another supported cable type.)*
+*(Note: Depending on your specific JTAG hardware, you may need to change -c ch347_jtag to -c digilent, -c ch347_jtag, or another supported cable type.)*
 
 ## 4. Hardware Setup & Testing
 
@@ -61,6 +61,7 @@ The test suite verifies the functionality of the synthesized logic using a Raspb
 
 ### Wiring Requirements
 
+#### QMTech XC7K325T Core Board
 Connect the Pi GPIOs to the FPGA `GPIO U4` header as follows:
 
 | Raspberry Pi | FPGA Header (GPIO U4) | Signal Description |
@@ -72,22 +73,32 @@ Connect the Pi GPIOs to the FPGA `GPIO U4` header as follows:
 
 *(Note: The test scripts use BCM numbering for the Pi GPIOs.)*
 
+#### QMTech Kintex 7 Development Board
+The Pi CM4 GPIOs are connected to the FPGA `CM4_GPIO` as follows:
+
+| Raspberry Pi | FPGA | Signal Description |
+| --- | --- | --- |
+| **GND** | **GND** | Common Ground |
+| **GPIO 7** | CM4_GPIO[7] | Switch state output from FPGA (Test 1) |
+| **GPIO 8** | CM4_GPIO[8] | Loopback input *to* FPGA (Test 2) |
+| **GPIO 9** | CM4_GPIO[9] | Loopback output *from* FPGA (Test 2) |
+
 ### Running the Tests
 
-Ensure the FPGA is powered and programmed with one of the generated bitstreams (e.g., `bin/loopback_v.bit` or `bin/loopback_hls.bit`) before running the tests.
+Ensure the FPGA is powered and programmed with one of the generated bitstreams (e.g., `bin/dev_loopback_v.bit` or `bin/dev_loopback_hls.bit`) before running the tests.
 
 You can run either the Bash or Python version of the test script. Both tests require root privileges for raw GPIO access.
 
 **Using Bash (sysfs):**
 
 ```bash
-sudo ./scripts/loopback_test.sh
+sudo ./scripts/dev_loopback_test.sh
 ```
 
 **Using Python (RPi.GPIO):**
 
 ```bash
-sudo ./scripts/loopback_test.py
+sudo ./scripts/dev_loopback_test.py
 ```
 
 Follow the on-screen prompts. Test 1 will ask you to physically press `SW3` on the FPGA board. Test 2 will automatically run a high/low signal loopback test between the Pi and the FPGA. Additionally, during the test, `LED2` on the board will flash every 1 second to indicate the clock is running.
